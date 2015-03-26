@@ -24,6 +24,12 @@ int main(int argc, char *argv[])
         return 3;
     }
     
+    char hash[40];
+    while (fscanf(hf, "%s", hash) != EOF)
+    {
+        printf("%s\n", hash);
+    }
+    
     fclose(hf);
     fclose(df);
 }
