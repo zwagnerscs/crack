@@ -1,5 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "md5.h"
+
+FILE *openfile(char *fname);
 
 int main(int argc, char *argv[])
 {
@@ -10,26 +13,31 @@ int main(int argc, char *argv[])
     }
     
     FILE *hf, *df;
-    hf = fopen(argv[1], "r");
-    if (!hf)
-    {
-        printf("Couldn't open %s for reading\n", argv[1]);
-        return 2;
-    }
+    hf = openfile(argv[1]);
     
-    df = fopen(argv[2], "r");
-    if (!df)
-    {
-        printf("Couldn't open %s for reading\n", argv[2]);
-        return 3;
-    }
+
     
     char hash[40];
     while (fscanf(hf, "%s", hash) != EOF)
     {
         printf("%s\n", hash);
+        df = openfile(argv[2]);
+        // For each hash, loop through df, hashing each,
+        // print a match when we find it.
+        fclose(df);
     }
     
     fclose(hf);
-    fclose(df);
+}
+
+
+FILE *openfile(char *fname)
+{
+    FILE *f = fopen(fname, "r");
+    if (!f)
+    {
+        printf("Couldn't open %s for reading\n", fname);
+        exit(2);
+    }
+    return f;
 }
