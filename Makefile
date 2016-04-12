@@ -16,7 +16,7 @@ hashpass.o: hashpass.c md5.h
 
 
 hashes:
-	./hashpass < rockyou100.txt > hashes.txt
+	./hashpass rockyou100.txt hashes.txt
 
 clean:
 	rm -f *.o hashpass hashes.txt
