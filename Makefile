@@ -15,8 +15,11 @@ md5.o: md5.c md5.h
 hashpass.o: hashpass.c md5.h
 
 
-hashes:
+hashes: hashpass
 	./hashpass rockyou100.txt hashes.txt
+
+leakcheck: hashpass
+	valgrind ./hashpass rockyou100.txt hashes.txt
 
 clean:
 	rm -f *.o hashpass hashes.txt
