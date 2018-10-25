@@ -18,6 +18,9 @@ hashpass.o: hashpass.c md5.h
 hashes: hashpass
 	./hashpass rockyou100.txt hashes.txt
 
+wordhashes: hashpass
+	./hashpass words.txt wordhashes.txt
+
 check: hashpass
 	valgrind ./hashpass rockyou100.txt hashes.txt
 
