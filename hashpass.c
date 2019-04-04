@@ -33,4 +33,6 @@ int main (int argc, char *argv[]) {
             free(md5_line);
         }
     }
+    fclose(in);
+    fclose(out);
 }
