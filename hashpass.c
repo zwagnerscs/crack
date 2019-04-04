@@ -27,6 +27,10 @@ int main (int argc, char *argv[]) {
             char *md5_line = md5(line, line_length);
             fprintf (out, "%s\n", md5_line);
             free(md5_line);
+        } else {
+            char *md5_line = md5(line, line_length);
+            fprintf (out, "%s\n", md5_line);
+            free(md5_line);
         }
     }
 }
